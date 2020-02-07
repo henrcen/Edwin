@@ -14,10 +14,13 @@ public class IntakeToggleCommand extends InstantCommand {
 
   @Override
   public void initialize() {
-    if(intake.isExtended())
+    if(intake.isExtended()) {
       intake.retract();
+      System.out.println("IntakeToggleCommand: Retracted Intake.");
+    }
     else {
       intake.extend();
+      System.out.println("IntakeToggleCommand: Extended Intake.");
     }
   }
 }

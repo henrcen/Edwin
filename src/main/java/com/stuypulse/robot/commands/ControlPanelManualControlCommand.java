@@ -23,6 +23,7 @@ public class ControlPanelManualControlCommand implements Command {
     public void execute() {
         // TODO Auto-generated method stub
         //cPanel.turn(gamepad.getRightY());
+        System.out.println("Run ControlPanelManualControlCommand");
         Command.super.execute();
     }
 

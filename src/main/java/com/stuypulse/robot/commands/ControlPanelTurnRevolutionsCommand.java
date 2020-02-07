@@ -31,11 +31,13 @@ public class ControlPanelTurnRevolutionsCommand extends CommandBase {
         cPanel.turn(1);
         if (previousColor != null && previousColor != cPanel.getColor()) {
             colorCount += 1;
+            System.out.println("ControlPanelTurnRevolutionsCommand: Color has changed/Color Count += 1.");
         }
 
         if (colorCount == 8) {
             rotationsAmount += 1;
             colorCount = 0;
+            System.out.println("ControlPanelTurnRevolutionsCommand: Rotation has been made.");
         }
         previousColor = cPanel.getColor();
     }

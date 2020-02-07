@@ -14,13 +14,17 @@ public class IntakeAcquireCommand extends CommandBase {
 
   @Override
   public void initialize() {
-    if(!intake.isExtended())
+    if(!intake.isExtended()) {
       intake.extend();
+      System.out.println("IntakeAcquireCommand: Intake is extended.");
+    }
   }
 
   @Override
   public void execute() {
       intake.acquire();
+      System.out.println("IntakeAcquireCommand: Acquired game piece.");
+
   }
 
   @Override

@@ -39,7 +39,7 @@ public class ControlPanelSpinToColorCommand extends CommandBase {
                     goal = null;
                     break;
             }
-            System.out.println("ControlPanelSpinToColorCommand: Target color is: " + goal.toString());
+            System.out.println("ControlPanelSpinToColorCommand: Target color is: " + goal);
         }
     }
 

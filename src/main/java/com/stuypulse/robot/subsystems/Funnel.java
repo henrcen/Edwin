@@ -12,14 +12,17 @@ public class Funnel extends SubsystemBase {
 
     public Funnel() {
         motor = new CANSparkMax(Constants.FUNNEL_MOTOR_PORT, MotorType.kBrushless);
+
     }
 
     public void funnel() {
         motor.set(Constants.FUNNEL_SPEED);
+        System.out.println("Funnel : " + motor);
     }
 
     public void unfunnel() {
         motor.set(Constants.UNFUNNEL_SPEED);
+        System.out.println("Unfunnel : " + motor);
     }
 
 }

@@ -43,18 +43,22 @@ public class Drivetrain extends SubsystemBase {
 
         //Differential Drive Object
         drivetrain = new DifferentialDrive(leftMotors, rightMotors);
+
     }
 
     public void tankDrive(double left, double right) {
         drivetrain.tankDrive(left, right);
+        System.out.println("Tankdrive : " + drivetrain);
     }
 
     public void arcadeDrive(double speed, double rotation) {
         drivetrain.arcadeDrive(speed, rotation);
+        System.out.println("Arcadedrive : " + drivetrain);
     }
 
     public void curvatureDrive(double speed, double rotation, boolean quickturn) {
         drivetrain.curvatureDrive(speed, rotation, quickturn);
+        System.out.println("Curvaturedrive : " + drivetrain);
     }
 
 }

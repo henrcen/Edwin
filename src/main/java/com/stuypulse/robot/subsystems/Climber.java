@@ -19,17 +19,21 @@ public class Climber extends SubsystemBase {
 
     public void climbUp() {
         liftMotor.set(Constants.CLIMB_UP_SPEED);
+        System.out.println("Lift Climb Up : " + liftMotor);
     }
 
     public void climbDown() {
         liftMotor.set(Constants.CLIMB_DOWN_SPEED);
+        System.out.println("Lift Climb Down : " + liftMotor);
     }
 
     public void moveLeft(double speed) {
         yoyoMotor.set(speed);
+        System.out.println("Yoyo Move Left : " + yoyoMotor);
     }
 
     public void moveRight(double speed) {
         yoyoMotor.set(speed);
+        System.out.println("Yoyo Move Right : " + yoyoMotor);
     }
 }

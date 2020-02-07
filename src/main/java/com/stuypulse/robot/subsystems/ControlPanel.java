@@ -21,6 +21,7 @@ public class ControlPanel extends SubsystemBase {
 
     public void turn(double speed) {
         motor.set(speed);
+        System.out.println("Control Panel Turn : " + motor);
     }
 
     public Color getColor() {
@@ -29,6 +30,6 @@ public class ControlPanel extends SubsystemBase {
 
     public void stop() {
         motor.set(0);
-    }
+        System.out.println("Control Panel Stop : " + motor);    }
 }
 

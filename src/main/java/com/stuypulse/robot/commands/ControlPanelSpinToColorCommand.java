@@ -7,58 +7,37 @@ import edu.wpi.first.wpilibj.util.Color;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 
 public class ControlPanelSpinToColorCommand extends CommandBase {
-    private final ControlPanel cPanel;
+    private final ControlPanel controlPanel;
     private Color goal;
-    public ControlPanelSpinToColorCommand(ControlPanel cPanel) {
-        this.cPanel = cPanel;
-        addRequirements(cPanel);
-    }
-
-    @Override
-    public void initialize() {
+    public ControlPanelSpinToColorCommand(ControlPanel controlPanel) {
+        this.controlPanel = controlPanel;
+        addRequirements(controlPanel);
     }
 
     private void setTargetColor() {
         String gameData = DriverStation.getInstance().getGameSpecificMessage();
         if(gameData != null && gameData.length() > 0) {
-
-            switch (gameData.charAt(0)) {
-                case 'B' :
-                    goal = Color.kCyan;
-                    break;
-                case 'G' :
-                    goal = Color.kGreen;
-                    break;
-                case 'R' :
-                    goal = Color.kRed;
-                    break;
-                case 'Y' :
-                    goal = Color.kYellow;
-                    break;
-                default :
-                    goal = null;
-                    break;
-            }
-            System.out.println("ControlPanelSpinToColorCommand: Target color is: " + goal);
+            System.out.println("target color: " + gameData.charAt(0));
         }
     }
 
     @Override
     public void execute() {
+        System.out.println("Running ControlPanelSpinToColorCommand");
         if (goal == null) {
             setTargetColor();
         } else {
-            cPanel.turn(Constants.CONTROL_PANEL_TURN_SPEED);
+            controlPanel.turn(Constants.CONTROL_PANEL_TURN_SPEED);
         }
     }
     @Override
     public boolean isFinished() {
-        return goal == cPanel.getColor();
+        return true;
     }
 
     @Override
     public void end(boolean interrupted) {
-        // code to run when ends
-        cPanel.stop();
+        System.out.println("Ending ControlPanelSpinToColorCommand");
+        controlPanel.stop();
     }
 }

@@ -96,4 +96,9 @@ public interface Constants {
      *********************************************************************************************/
     int INTAKE_MOTOR_PORT = -1;
     int INTAKE_SOLENOID_PORT = -1;
+
+    double SHOOTER_MAX_RPM = 16500;
+    double SHOOT_FROM_INITATION_LINE_RPM = 3900;
+    double SHOOT_FROM_TRENCH_RPM = 4900;
+    double SHOOT_FROM_FAR_RPM = 5500;
     }

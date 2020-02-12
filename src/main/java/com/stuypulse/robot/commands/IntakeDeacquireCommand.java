@@ -4,7 +4,6 @@ import com.stuypulse.robot.subsystems.Intake;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 
 public class IntakeDeacquireCommand extends CommandBase {
-  @SuppressWarnings({"PMD.UnusedPrivateField", "PMD.SingularField"})
   private final Intake intake;
 
   public IntakeDeacquireCommand(Intake intake) {
@@ -14,16 +13,14 @@ public class IntakeDeacquireCommand extends CommandBase {
 
   @Override
   public void initialize() {
-    if(!intake.isExtended()) {
-      intake.extend();
-      System.out.println("IntakDeacquireCommand: Intake is extended.");
-    }
+    System.out.println("Initializing IntakeDeacquireCommand");
+    intake.extend();
   }
 
   @Override
   public void execute() {
-      intake.deacquire();
-      System.out.println("IntakDeacquireCommand: Deacquired game piece.");
+    System.out.println("Running IntakeDeacquireCommand");
+    intake.deacquire();
   }
 
   @Override
@@ -33,5 +30,7 @@ public class IntakeDeacquireCommand extends CommandBase {
 
   @Override
   public void end(boolean interrupted) {
+    System.out.println("Ending IntakeDeacquireCommand");
+    intake.stop();
   }
 }

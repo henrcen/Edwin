@@ -1,49 +1,39 @@
 package com.stuypulse.robot.subsystems;
 
-import com.revrobotics.CANSparkMax;
-import com.revrobotics.CANSparkMaxLowLevel.MotorType;
-import com.stuypulse.robot.Constants;
-
-import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
-
 public class Intake extends SubsystemBase {
-    private CANSparkMax intakeMotor;
-    private Solenoid intakeSolenoid;
-  
+
     public Intake() {
-        intakeMotor = new CANSparkMax(Constants.INTAKE_MOTOR_PORT, MotorType.kBrushless);
-        intakeSolenoid = new Solenoid(Constants.INTAKE_SOLENOID_PORT);
-
-    }
-
-    public boolean isExtended() {
-        return intakeSolenoid.get();
     }
 
     public void extend() {
-        intakeSolenoid.set(true);
-        System.out.println("Intake Extend : " + intakeMotor);
+        System.out.println("extending intake");
     }
 
     public void retract() {
-        intakeSolenoid.set(false);
-        System.out.println("Intake Retract : " + intakeMotor);
+        System.out.println("retracting intake");
+    }
+
+    public void toggle() {
+        System.out.println("toggling intake");
     }
 
     public void acquire() {
-        intakeMotor.set(1);
-        System.out.println("Intake Acquire : " + intakeMotor);
+        System.out.println("acquiring");
     }
 
     public void deacquire() {
-        intakeMotor.set(-1);
-        System.out.println("Intake Deacquire : " + intakeMotor);
+        System.out.println("deacquring");
+    }
+
+    public void stop() {
+        System.out.println("stopping intake");
     }
 
     public void setMotor(double speed) {
-        intakeMotor.set(speed);
-        System.out.println("Intake setMotor : " + intakeMotor);
+        System.out.println("setting intake motor at" + speed);
     }
+
+
 }

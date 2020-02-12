@@ -1,54 +1,35 @@
 package com.stuypulse.robot.commands;
 
 import com.stuypulse.robot.subsystems.ControlPanel;
-import edu.wpi.first.wpilibj.DriverStation;
-import edu.wpi.first.wpilibj.util.Color;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 
-/**
- * An example command that uses an example subsystem.
- */
 public class ControlPanelTurnRevolutionsCommand extends CommandBase {
-    private final ControlPanel cPanel;
-    private int times;
-    private Color previousColor = null;
-    private int colorCount;
-    private int rotationsAmount;
+    private final ControlPanel controlPanel;
 
     /**
      * Creates a new ExampleCommand.
      *
      * @param subsystem The subsystem used by this command.
      */
-    public ControlPanelTurnRevolutionsCommand(ControlPanel cPanel, int times) {
-        this.times = times;
-        this.cPanel = cPanel;
-        addRequirements(cPanel);
+    public ControlPanelTurnRevolutionsCommand(ControlPanel controlPanel) {
+        this.controlPanel = controlPanel;
+        addRequirements(controlPanel);
     }
 
     @Override
     public void execute() {
-        cPanel.turn(1);
-        if (previousColor != null && previousColor != cPanel.getColor()) {
-            colorCount += 1;
-            System.out.println("ControlPanelTurnRevolutionsCommand: Color has changed/Color Count += 1.");
-        }
-
-        if (colorCount == 8) {
-            rotationsAmount += 1;
-            colorCount = 0;
-            System.out.println("ControlPanelTurnRevolutionsCommand: Rotation has been made.");
-        }
-        previousColor = cPanel.getColor();
+        System.out.println("Running ControlPanelTurnRevolutionsCommand");
+        controlPanel.turn(1.0);
     }
 
     @Override
     public boolean isFinished() {
-            return rotationsAmount == 3;
+        return true;
     }
 
     @Override
     public void end(boolean interrupted) {
-        cPanel.stop();
+        System.out.println("Ending ControlPanelTurnRevolutionsCommand");
+        controlPanel.stop();
     }
 }

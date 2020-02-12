@@ -7,12 +7,22 @@
 
 package com.stuypulse.robot;
 
+import com.stuypulse.robot.commands.ChimneyDownCommand;
 import com.stuypulse.robot.commands.ControlPanelManualControlCommand;
+import com.stuypulse.robot.commands.ControlPanelSpinToColorCommand;
+import com.stuypulse.robot.commands.ControlPanelTurnRevolutionsCommand;
+import com.stuypulse.robot.commands.IntakeAcquireCommand;
+import com.stuypulse.robot.commands.IntakeDeacquireCommand;
+import com.stuypulse.robot.commands.IntakeRetractCommand;
+import com.stuypulse.robot.commands.ShooterControlCommand;
+import com.stuypulse.robot.subsystems.Chimney;
 import com.stuypulse.robot.subsystems.Climber;
 import com.stuypulse.robot.subsystems.ControlPanel;
-import com.stuypulse.robot.subsystems.Drivetrain;
 import com.stuypulse.robot.subsystems.Funnel;
 import com.stuypulse.robot.subsystems.Intake;
+import com.stuypulse.robot.subsystems.Shooter;
+import com.stuypulse.robot.util.LEDController;
+import com.stuypulse.stuylib.input.WPIGamepad;
 import com.stuypulse.stuylib.input.gamepads.Logitech;
 /**
  * This class is where the bulk of the robot should be declared.  Since Command-based is a
@@ -20,7 +30,6 @@ import com.stuypulse.stuylib.input.gamepads.Logitech;
  * periodic methods (other than the scheduler calls).  Instead, the structure of the robot
  * (including subsystems, commands, and button mappings) should be declared here.
  */
-import com.stuypulse.stuylib.input.gamepads.PS4;
 
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
@@ -29,12 +38,14 @@ public class RobotContainer {
 
   private final Funnel funnel = new Funnel();
   private final Climber climber = new Climber();
-  private final Drivetrain drivetrain = new Drivetrain();
   private final Intake intake = new Intake();
   private final ControlPanel controlPanel = new ControlPanel();
+  private final Shooter shooter = new Shooter();
+  private final Chimney chimney = new Chimney();
 
-  private final PS4 driverGampead = new PS4(Constants.DRIVER_GAMEPAD_PORT);
-  private final Logitech operatorGamepad = new Logitech(Constants.OPERATOR_GAMEPAD_PORT);
+  private final LEDController controller = new LEDController(0, shooter);
+
+  private final WPIGamepad operatorGamepad = new Logitech.XMode(Constants.OPERATOR_GAMEPAD_PORT);
 
   
   /**
@@ -44,7 +55,8 @@ public class RobotContainer {
     // Configure the button bindings
     configureButtonBindings();
 
-    controlPanel.setDefaultCommand(new ControlPanelManualControlCommand(controlPanel));
+    controlPanel.setDefaultCommand(new ControlPanelManualControlCommand(controlPanel, operatorGamepad));
+    shooter.setDefaultCommand(new ShooterControlCommand(shooter, operatorGamepad));
   }
 
   /**
@@ -54,6 +66,13 @@ public class RobotContainer {
    * {@link edu.wpi.first.wpilibj2.command.button.JoystickButton}.
    */
   private void configureButtonBindings() {
+    operatorGamepad.getLeftTrigger().whileHeld(new IntakeDeacquireCommand(intake));
+    operatorGamepad.getRightTrigger().whileHeld(new IntakeAcquireCommand(intake));
+    operatorGamepad.getLeftBumper().whenPressed(new ControlPanelSpinToColorCommand(controlPanel));
+    operatorGamepad.getRightTrigger().whenPressed(new ControlPanelTurnRevolutionsCommand(controlPanel));
+    operatorGamepad.getTopButton().whileHeld(new ChimneyDownCommand(chimney));
+    operatorGamepad.getLeftButton().whileHeld(new ChimneyDownCommand(chimney));
+    operatorGamepad.getRightButton().whenPressed(new IntakeRetractCommand(intake));
   }
 
 
@@ -65,6 +84,10 @@ public class RobotContainer {
   public Command getAutonomousCommand() {
     // An ExampleCommand will run in autonomous
     return null;
+  }
+
+  public LEDController getLEDController() {
+    return controller;
   }
 
 }

@@ -4,7 +4,21 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class Shooter extends SubsystemBase {
 
+    public enum Mode {
+        SHOOT_FROM_INITIATION_LINE, SHOOT_FROM_FAR, SHOOT_FROM_TRENCH
+    }
+
+    private Mode mode;
+
     public Shooter() {
+    }
+
+    public void setMode(Mode mode) {
+        this.mode = mode;
+    }
+
+    public Mode getMode() {
+        return mode;
     }
 
     public void runShooter(double speed) {

@@ -1,39 +1,51 @@
 package com.stuypulse.robot.subsystems;
 
-import com.revrobotics.CANSparkMax;
-import com.revrobotics.CANSparkMaxLowLevel.MotorType;
+import com.revrobotics.CANSparkMax.IdleMode;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
-import com.stuypulse.robot.Constants;
 
 public class Climber extends SubsystemBase {
 
-    private CANSparkMax liftMotor;
-    private CANSparkMax yoyoMotor;
-    
-    
     public Climber() {
-        liftMotor = new CANSparkMax(Constants.CLIMBER_LIFT_MOTOR_PORT, MotorType.kBrushless);
-        yoyoMotor = new CANSparkMax(Constants.CLIMBER_YOYO_MOTOR_PORT, MotorType.kBrushless);
     }
 
-    public void climbUp() {
-        liftMotor.set(Constants.CLIMB_UP_SPEED);
-        System.out.println("Lift Climb Up : " + liftMotor);
+    public void setNeutralMode(IdleMode mode) {
+        System.out.println("setting neutral mode");
     }
 
-    public void climbDown() {
-        liftMotor.set(Constants.CLIMB_DOWN_SPEED);
-        System.out.println("Lift Climb Down : " + liftMotor);
+    public void moveLiftDown() {
+        System.out.println("moving climber lift down");
     }
 
-    public void moveLeft(double speed) {
-        yoyoMotor.set(speed);
-        System.out.println("Yoyo Move Left : " + yoyoMotor);
+    public void moveLiftUp() {
+        System.out.println("moving climber lift up");
     }
 
-    public void moveRight(double speed) {
-        yoyoMotor.set(speed);
-        System.out.println("Yoyo Move Right : " + yoyoMotor);
+    public void moveLift(double speed) {
+        System.out.println("moving lift at " + speed);
+    }
+
+    public void moveYoyo(double speed) {
+        System.out.println("moving yoyo at " + speed);
+    }
+
+    public void stopClimber() {
+        System.out.println("stopping lift climber");
+    }
+
+    public void stopYoyo() {
+        System.out.println("stopping yoyo");
+    }
+
+    public void toggleLiftBrake() {
+        System.out.println("toggling lift brake");
+    }
+
+    public void enableLiftBrake() {
+        System.out.println("enabling lift brake");
+    }
+
+    public void releaseLiftBrake() {
+        System.out.println("release lift brake");
     }
 }

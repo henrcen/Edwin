@@ -6,8 +6,8 @@ import edu.wpi.first.wpilibj.PWMSparkMax;
 
 public class LEDController {
 
-    private static final PWMSparkMax controller;
-    private static final Shooter shooter;
+    private static PWMSparkMax controller;
+    private static Shooter shooter;
 
     public LEDController(int port, Shooter shooter) {
         controller = new PWMSparkMax(port);

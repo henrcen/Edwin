@@ -5,10 +5,19 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 public class Shooter extends SubsystemBase {
 
     public enum Mode {
-        SHOOT_FROM_INITIATION_LINE, SHOOT_FROM_FAR, SHOOT_FROM_TRENCH
+        SHOOT_FROM_INITIATION_LINE, 
+        SHOOT_FROM_TRENCH,
+        SHOOT_FROM_FAR, 
+        CHARGING_SHOT_INITATION_LINE, 
+        CHARING_SHOT_TRENCH, 
+        CHARGING_SHOT_FAR,
+        ALIGNING,
+        ALIGNED,
+        HOLDING_MAX_CELLS,
+        ACQUIRED_ONE_CELL
     }
 
-    private Mode mode;
+    public Mode mode; //SET MODE HERE
 
     public Shooter() {
     }

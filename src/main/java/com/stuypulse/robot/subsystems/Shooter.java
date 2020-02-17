@@ -17,7 +17,7 @@ public class Shooter extends SubsystemBase {
         ACQUIRED_ONE_CELL
     }
 
-    public Mode mode; //SET MODE HERE
+    public Mode mode = Mode.SHOOT_FROM_INITIATION_LINE; //SET MODE HERE
 
     public Shooter() {
     }

@@ -14,7 +14,6 @@ public class MobilityAutonCommand extends SequentialCommandGroup {
             new DrivetrainMovementCommand(drivetrain, 0, Constants.DISTANCE_TO_MOVE_AT_START),
             new DrivetrainStopCommand(drivetrain)
         );
-        //TODO: DONEEE
     }
 
 

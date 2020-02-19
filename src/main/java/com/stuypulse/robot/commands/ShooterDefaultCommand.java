@@ -26,7 +26,7 @@ public class ShooterDefaultCommand extends CommandBase {
     public ShooterDefaultCommand(Shooter shooter, WPIGamepad gamepad) {
         this(shooter, gamepad, new PIDController(), new PIDController());
     }
-
+`
     public void updatePID() {
         if (shootController instanceof PIDController) {
             PIDController controller = (PIDController) shootController;

@@ -398,4 +398,10 @@ public interface Constants {
     
     double ANGLE_FROM_THREE_BALL_TO_TWO_BALL = 90;
     double DISTANCE_FROM_THREE_BALL_TO_TWO_BALL = 25.42;
+
+    /*********************************************************************************************
+     * Shoot three at start, get 5 balls from trench and rdvs, then get three balls from rdvs and two balls from enemy trench
+     *********************************************************************************************/
+
+     double 
 }

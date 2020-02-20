@@ -14,6 +14,7 @@ import com.stuypulse.robot.commands.ControlPanelTurnRevolutionsCommand;
 import com.stuypulse.robot.commands.IntakeAcquireCommand;
 import com.stuypulse.robot.commands.IntakeDeacquireCommand;
 import com.stuypulse.robot.commands.IntakeRetractCommand;
+import com.stuypulse.robot.commands.PrintAutonCommand;
 import com.stuypulse.robot.commands.ShooterControlCommand;
 import com.stuypulse.robot.subsystems.Chimney;
 import com.stuypulse.robot.subsystems.Climber;
@@ -55,8 +56,8 @@ public class RobotContainer {
     // Configure the button bindings
     configureButtonBindings();
 
-    controlPanel.setDefaultCommand(new ControlPanelManualControlCommand(controlPanel, operatorGamepad));
-    shooter.setDefaultCommand(new ShooterControlCommand(shooter, operatorGamepad));
+    //controlPanel.setDefaultCommand(new ControlPanelManualControlCommand(controlPanel, operatorGamepad));
+    //shooter.setDefaultCommand(new ShooterControlCommand(shooter, operatorGamepad));
   }
 
   /**
@@ -82,8 +83,9 @@ public class RobotContainer {
    * @return the command to run in autonomous
    */
   public Command getAutonomousCommand() {
+    return new PrintAutonCommand();
     // An ExampleCommand will run in autonomous
-    return null;
+    //return null;
   }
 
   public LEDController getLEDController() {
